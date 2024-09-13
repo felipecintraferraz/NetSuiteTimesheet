@@ -17,7 +17,7 @@ robotframework-assertion-engine==3.0.3
 robotframework-browser==18.4.0
 robotframework-datadriver==1.11.1
 robotframework-pythonlibcore==4.4.1
-setuptools==69.5.1
+setuptools==70.0.0
 six==1.16.0
 typing_extensions==4.11.0
 tzdata==2024.1
