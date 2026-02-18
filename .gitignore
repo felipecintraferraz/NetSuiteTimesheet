@@ -1,4 +1,10 @@
 .venv
+.vscode/
 .env
 __pycache__/
 results/
+*.xml
+playwright*.txt
+backup_codes.txt
+*/log.html
+*/report.html
