@@ -9,6 +9,7 @@ backup_codes_file = os.path.join(project_path, 'backup_codes.txt')
 
 load_dotenv(dotenv_path=dotenv_file)
 
+
 def get_random_line_from_file(file_path):
     with open(file_path, 'r+') as file:
         lines = file.readlines()
@@ -23,10 +24,9 @@ def get_random_line_from_file(file_path):
             return None
 
 
+HEADLESS = os.getenv('HEADLESS')
 URL = os.getenv('URL')
 EMAIL = os.getenv('EMAIL')
 PASSWORD = os.getenv('PASSWORD')
 DEFAULT_TIMEOUT = '30s'
 TWO_FA_CODE = get_random_line_from_file(backup_codes_file)
-
-HEADLESS = True
