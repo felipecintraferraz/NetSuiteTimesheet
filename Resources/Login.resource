@@ -15,9 +15,7 @@ Fill Login Form
     Click    \#login-submit
 
 Input 2FA Code
-    IF  not ${USE_YKMAN}
-        Click    //label[text()='Backup codes' or text()='Códigos de backup']
-    END
+    Click    //label[text()='Backup codes' or text()='Códigos de backup']
     ${input}    Get Element
     ...    //div/span[text()='CÓDIGO DE VERIFICAÇÃO' or text()='VERIFICATION CODE']/following-sibling::div//input
     Fill Text    ${input}    ${TWO_FA_CODE}

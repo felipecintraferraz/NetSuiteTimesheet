@@ -5,7 +5,8 @@ __pycache__/
 results/
 *.xml
 playwright*.txt
-log.html
+backup_codes.txt
+*/log.html
 */report.html
 report.html
-backup_codes.txt
+
