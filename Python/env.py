@@ -2,7 +2,8 @@ import os
 import random
 import subprocess
 
-project_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+project_path = os.path.abspath(os.path.join(
+    os.path.dirname(__file__), os.pardir))
 
 dotenv_file = os.path.join(project_path, '.env')
 backup_codes_file = os.path.join(project_path, 'backup_codes.txt')
@@ -31,6 +32,7 @@ def get_random_line_from_file(file_path):
         else:
             return None
 
+
 def get_oath_using_ykman():
     account = os.getenv('YKMAN_ACCOUNT')
     try:
@@ -41,7 +43,8 @@ def get_oath_using_ykman():
             check=True,
         )
     except FileNotFoundError as e:
-        raise RuntimeError("ykman was not found on PATH. Install YubiKey Manager CLI or define TWO_FA_CODE.") from e
+        raise RuntimeError(
+            "ykman was not found on PATH. Install YubiKey Manager CLI or define TWO_FA_CODE.") from e
     code = result.stdout.strip()
     if not code.isdigit():
         raise ValueError("OATH code must be a number")
@@ -55,9 +58,8 @@ PASSWORD = os.getenv('PASSWORD')
 DEFAULT_TIMEOUT = '30s'
 YKMAN_ACCOUNT = os.getenv('YKMAN_ACCOUNT')
 USE_YKMAN = bool(YKMAN_ACCOUNT)
-TWO_FA_CODE = os.getenv('TWO_FA_CODE') or (
-    get_oath_using_ykman() if USE_YKMAN else get_random_line_from_file(backup_codes_file)
-)
+TWO_FA_CODE = get_oath_using_ykman(
+) if USE_YKMAN else get_random_line_from_file(backup_codes_file)
 
 
 def _mask_secret(value: object) -> object:
@@ -67,6 +69,7 @@ def _mask_secret(value: object) -> object:
     if len(text) <= 4:
         return "*" * len(text)
     return f"{text[:2]}{'*' * (len(text) - 4)}{text[-2:]}"
+
 
 variables = {
     "HEADLESS": HEADLESS,
